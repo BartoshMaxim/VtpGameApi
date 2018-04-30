@@ -11,7 +11,6 @@ namespace VtpGameApi.Helpers
 		{
 			var htmlNodes = new HtmlWeb().Load(uri).DocumentNode.SelectNodes("//article");
 
-
 			foreach (var htmlNode in htmlNodes)
 			{
 				var article = new Article();
@@ -23,7 +22,11 @@ namespace VtpGameApi.Helpers
 					article.Header = headerNode.InnerText;
 					article.Uri = headerNode.Attributes["href"]?.Value;
 				}
+
+				var bodyNode = htmlNode.SelectNodes("//div[contains(@class,'entry-content')]/p/span").FirstOrDefault();
 			}
+
+			return null;
 		}
 	}
 }
