@@ -15,7 +15,7 @@ namespace VtpGameApi.Controllers
 		[OutputCache(Duration = 10000, Location = OutputCacheLocation.Server)]
 		public IEnumerable<Article> Get(int itemsCount = 10)
 		{
-			return ArticleHelper.GetArticlesFromHtml(@"http://web.kpi.kharkov.ua/otp/ru/2018/", itemsCount);
+			return ArticleHelper.GetSecondArticleList(@"http://web.kpi.kharkov.ua/otp/ru/2018/", itemsCount);
 		}
 	}
 }

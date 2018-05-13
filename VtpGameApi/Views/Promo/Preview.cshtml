@@ -1,0 +1,32 @@
+﻿@model  IEnumerable<VtpGameApi.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    @foreach (var article in Model)
+    {
+        <div class="col-md-7 article">
+            @if (!string.IsNullOrEmpty(article.ImageUri))
+            {
+                <div class="col-md-6">
+                    <img src="@article.ImageUri" />
+                </div>
+            }
+            <div class="col-md-6">
+                @if (!string.IsNullOrEmpty(article.Header))
+                {
+                    <div>
+                        <a href="@article.Uri">@article.Header</a>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(article.Body))
+                {
+                    <div>@article.Body</div>
+                }
+            </div>
+        </div>
+    }
+</div>
