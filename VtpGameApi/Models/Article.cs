@@ -2,6 +2,8 @@
 {
 	public class Article
 	{
+		public int ArticleId { get; set; }
+
 		public string Uri { get; set; }
 
 		public string ImageUri { get; set; }

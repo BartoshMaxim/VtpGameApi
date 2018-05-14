@@ -1,96 +1,102 @@
 ﻿@model VtpGameApi.Models.ViewModel.PromoSettingsVM
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
 <h2>Settings</h2>
 
 @using (Html.BeginForm("Index", "Promo", FormMethod.Post))
 {
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <h4>Promo List:</h4>
-            <div class="col-md-12">
-                <div>
-                    <input name="PromoList.ArticleType" type="radio" value="1" @(Model.PromoList.ArticleType == ArticleType.Custom ? "checked" : string.Empty)>
-                    @ArticleType.Custom.ToString() @Html.ActionLink("Preview", "Preview", new { articleType = (int)ArticleType.Custom, promoType = "PromoList", count = Model.PromoList.ArticlesCount })
-                </div>
-                <div>
-                    <input name="PromoList.ArticleType" type="radio" value="2" @(Model.PromoList.ArticleType == ArticleType.SecondList ? "checked" : string.Empty)>
-                    @ArticleType.SecondList.ToString() @Html.ActionLink("Preview", "Preview", new { articleType = (int)ArticleType.SecondList, promoType = "PromoList", count = Model.PromoList.ArticlesCount })
-                </div>
-                <div>
-                    <input name="PromoList.ArticleType" type="radio" value="3" @(Model.PromoList.ArticleType == ArticleType.ThirdList ? "checked" : string.Empty)>
-                    @ArticleType.ThirdList.ToString() @Html.ActionLink("Preview", "Preview", new { articleType = (int)ArticleType.ThirdList, promoType = "PromoList", count = Model.PromoList.ArticlesCount })
-                </div>
-            </div>
-            <div>
-                <label>
-                    Articles Count
-                </label>
-                <div class="col-md-12">
-                    @Html.EditorFor(m => m.PromoList.ArticlesCount, new { min = 1, max = 20 })
-                </div>
-            </div>
-            <div>
-                <label>
-                    Period of appearance of advertising(minutes)
-                </label>
-                <div class="col-md-12">
-                    @Html.EditorFor(m => m.PromoList.PromoPeriod, new { min = 0 })
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <h4>Small Promo:</h4>
-            <div class="col-md-12">
-                <div>
-                    <div>
-                        <input name="SmallPromo.ArticleType" type="radio" value="1" @(Model.SmallPromo.ArticleType == ArticleType.Custom ? "checked" : string.Empty)>
-                        @ArticleType.Custom.ToString() @Html.ActionLink("Preview", "Preview", new { articleType = (int)ArticleType.Custom, promoType = "SmallPromo", count = 1 })
-                    </div>
-                    <div>
-                        <input name="SmallPromo.ArticleType" type="radio" value="2" @(Model.SmallPromo.ArticleType == ArticleType.SecondList ? "checked" : string.Empty)>
-                        @ArticleType.SecondList.ToString() @Html.ActionLink("Preview", "Preview", new { articleType = (int)ArticleType.SecondList, promoType = "SmallPromo", count = 1 })
-                    </div>
-                    <div>
-                        <input name="SmallPromo.ArticleType" type="radio" value="3" @(Model.SmallPromo.ArticleType == ArticleType.ThirdList ? "checked" : string.Empty)>
-                        @ArticleType.ThirdList.ToString() @Html.ActionLink("Preview", "Preview", new { articleType = (int)ArticleType.ThirdList, promoType = "SmallPromo", count = 1 })
-                    </div>
-                </div>
-            </div>
-            <div>
-                <label>
-                    Period of appearance of advertising(minutes)
-                </label>
-                <div class="col-md-12">
-                    @Html.EditorFor(m => m.SmallPromo.PromoPeriod, new { min = 0 })
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <h4>Big Promo:</h4>
-            <div>
-                <label>
-                    Period of appearance of advertising(minutes)
-                </label>
-                <div class="col-md-12">
-                    @Html.EditorFor(m => m.BigPromo.PromoPeriod, new { min = 0 })
-                </div>
-                <div>
-                    @ArticleType.ThirdList.ToString() @Html.ActionLink("Preview", "Preview", new { articleType = (int)ArticleType.BigPromo, promoType = "BigPromo", count = 1 })
-                </div>
-            </div>
-        </div>
+	@Html.AntiForgeryToken()
+	<div class="form-horizontal">
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			<h4>Promo List:</h4>
+			<div class="col-md-12">
+				<div>
+					<input name="PromoList.ArticleType" type="radio" value="1" @(Model.PromoList.ArticleType == ArticleType.Custom ? "checked" : string.Empty)>
+					@ArticleType.Custom.ToString()
+					@Html.ActionLink("Preview", "Index", "PromoList", new { articleType = (int)ArticleType.Custom, count = Model.PromoList.ArticlesCount }, null)
+				</div>
+				<div>
+					<input name="PromoList.ArticleType" type="radio" value="2" @(Model.PromoList.ArticleType == ArticleType.SecondList ? "checked" : string.Empty)>
+					@ArticleType.SecondList.ToString()
+					@Html.ActionLink("Preview", "Index", "PromoList", new { articleType = (int)ArticleType.SecondList, count = Model.PromoList.ArticlesCount }, null)
+				</div>
+				<div>
+					<input name="PromoList.ArticleType" type="radio" value="3" @(Model.PromoList.ArticleType == ArticleType.ThirdList ? "checked" : string.Empty)>
+					@ArticleType.ThirdList.ToString()
+					@Html.ActionLink("Preview", "Index", "PromoList", new { articleType = (int)ArticleType.ThirdList, count = Model.PromoList.ArticlesCount }, null)
+				</div>
+			</div>
+			<div>
+				<label>
+					Articles Count
+				</label>
+				<div class="col-md-12">
+					@Html.EditorFor(m => m.PromoList.ArticlesCount, new { min = 1, max = 20 })
+				</div>
+			</div>
+			<div>
+				<label>
+					Period of appearance of advertising(minutes)
+				</label>
+				<div class="col-md-12">
+					@Html.EditorFor(m => m.PromoList.PromoPeriod, new { min = 0 })
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<h4>Small Promo:</h4>
+			<div class="col-md-12">
+				<div>
+					<div>
+						<input name="SmallPromo.ArticleType" type="radio" value="1" @(Model.SmallPromo.ArticleType == ArticleType.Custom ? "checked" : string.Empty)>
+						@ArticleType.Custom.ToString()
+						@Html.ActionLink("Preview", "Index", "SmallPromo", new { articleType = (int)ArticleType.SmallPromo, promoType = "SmallPromo", count = 1 }, null)
+					</div>
+					<div>
+						<input name="SmallPromo.ArticleType" type="radio" value="2" @(Model.SmallPromo.ArticleType == ArticleType.SecondList ? "checked" : string.Empty)>
+						@ArticleType.SecondList.ToString()
+						@Html.ActionLink("Preview", "Index", "SmallPromo", new { articleType = (int)ArticleType.SecondList, promoType = "SmallPromo", count = 1 }, null)
+					</div>
+					<div>
+						<input name="SmallPromo.ArticleType" type="radio" value="3" @(Model.SmallPromo.ArticleType == ArticleType.ThirdList ? "checked" : string.Empty)>
+						@ArticleType.ThirdList.ToString()
+						@Html.ActionLink("Preview", "Index", "SmallPromo", new { articleType = (int)ArticleType.ThirdList, promoType = "SmallPromo", count = 1 }, null)
+					</div>
+				</div>
+			</div>
+			<div>
+				<label>
+					Period of appearance of advertising(minutes)
+				</label>
+				<div class="col-md-12">
+					@Html.EditorFor(m => m.SmallPromo.PromoPeriod, new { min = 0 })
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<h4>Big Promo:</h4>
+			<div>
+				<label>
+					Period of appearance of advertising(minutes)
+				</label>
+				<div class="col-md-12">
+					@Html.EditorFor(m => m.BigPromo.PromoPeriod, new { min = 0 })
+				</div>
+				<div>
+					@Html.ActionLink("Preview", "Preview", new { articleType = (int)ArticleType.BigPromo, promoType = "BigPromo", count = 1 })
+				</div>
+			</div>
+		</div>
 
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-11">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+		<div class="form-group">
+			<div class="col-md-offset-1 col-md-11">
+				<input type="submit" value="Save" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
 }
