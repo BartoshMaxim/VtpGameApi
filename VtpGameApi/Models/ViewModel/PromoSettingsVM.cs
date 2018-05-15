@@ -22,9 +22,9 @@ namespace VtpGameApi.Models.ViewModel
 
         public void SetDefault()
         {
-            PromoList = DataHelper.GetPromo<PromoList>();
-            SmallPromo = DataHelper.GetPromo<SmallPromo>();
-            BigPromo = DataHelper.GetPromo<BigPromo>();
+            PromoList = DataHelper.GetPromoSettings<PromoList>();
+            SmallPromo = DataHelper.GetPromoSettings<SmallPromo>();
+            BigPromo = DataHelper.GetPromoSettings<BigPromo>();
         }
 
         public void Save()

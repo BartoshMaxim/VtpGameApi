@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Net.Http.Headers;
+using System.Web.Http;
 
 namespace VtpGameApi
 {
@@ -13,9 +14,11 @@ namespace VtpGameApi
 
 			config.Routes.MapHttpRoute(
 				name: "DefaultApi",
-				routeTemplate: "api/{controller}/{id}",
-				defaults: new { id = RouteParameter.Optional }
+				routeTemplate: "api/{controller}/{promoType}",
+				defaults: new { promoType = RouteParameter.Optional }
 			);
+
+			config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 		}
 	}
 }

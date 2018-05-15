@@ -4,7 +4,7 @@
 	{
 		public Article Article { get; set; }
 
-		public string ControllerName { get; set; }
+		public string ActionName { get; set; }
 
 		public ArticleType ArticleType { get; set; }
 

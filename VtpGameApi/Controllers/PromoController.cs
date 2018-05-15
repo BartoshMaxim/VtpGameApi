@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using VtpGameApi.Helpers;
 using VtpGameApi.Models;
 using VtpGameApi.Models.ViewModel;
@@ -33,23 +34,19 @@ namespace VtpGameApi.Controllers
             return View(settingsVM);
         }
 
-        //public ActionResult Preview(ArticleType articleType, string promoType, int count)
-        //{
-        //    switch (promoType)
-        //    {
-        //        case "PromoList":
-        //            return PartialView("Preview", new PromoPreviewVM(DataHelper.GetArticles(articleType, count),articleType));
-        //        case "SmallPromo":
-        //            if (articleType == ArticleType.Custom)
-        //            {
-        //                articleType = ArticleType.SmallPromo;
-        //            }
+		public ActionResult PromoList(ArticleType articleType, int count = 10)
+		{
+			return View(new PromoPreviewVM(DataHelper.GetArticles(articleType, count), articleType, count));
+		}
 
-        //            return PartialView("Preview", new PromoPreviewVM(DataHelper.GetArticles(articleType, 1), articleType));
-        //        case "BigPromo":
-        //            return PartialView("Preview", new PromoPreviewVM(DataHelper.GetArticles(ArticleType.BigPromo, 1), articleType));
-        //    }
-        //    return View("Index");
-        //}
-    }
+		public ActionResult SmallPromo(ArticleType articleType)
+		{
+			return View(new ArticleVM { Article = DataHelper.GetArticles(articleType, 1).FirstOrDefault(), ActionName = "SmallPromo", ArticleType = articleType, Count = 1 });
+		}
+
+		public ActionResult BigPromo(ArticleType articleType)
+		{
+			return View(new ArticleVM { Article = DataHelper.GetArticles(articleType, 1).FirstOrDefault(), ActionName = "BigPromo", ArticleType = articleType, Count = 1 });
+		}
+	}
 }

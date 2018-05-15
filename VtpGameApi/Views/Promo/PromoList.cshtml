@@ -1,7 +1,7 @@
 ﻿@model  VtpGameApi.Models.ViewModel.PromoPreviewVM
 
 @{
-	ViewBag.Title = "Index";
+	ViewBag.Title = "PromoList";
 
 	string smallCol = Model.ArticleType == ArticleType.Custom ? "col-md-5" : "col-md-6";
 	string bigCol = Model.ArticleType == ArticleType.Custom ? "col-md-10" : "col-md-12";
@@ -34,8 +34,8 @@
 				@if (Model.ArticleType == ArticleType.Custom)
 				{
 					<div class="col-md-2">
-						@Html.ActionLink("Edit", "Edit", "Article", new { id = article.ArticleId, controllerName = "PromoList", articleType = (int)ArticleType.Custom, count = Model.Count }, null)
-						@Html.ActionLink("Delete", "Delete", "Article", new { id = article.ArticleId, controllerName = "PromoList", articleType = (int)ArticleType.Custom, count = Model.Count }, null)
+						@Html.ActionLink("Edit", "Edit", "Article", new { id = article.ArticleId, actionName = "PromoList", articleType = (int)ArticleType.Custom, count = Model.Count }, null)
+						@Html.ActionLink("Delete", "Delete", "Article", new { id = article.ArticleId, actionName = "PromoList", articleType = (int)ArticleType.Custom, count = Model.Count }, null)
 					</div>
 				}
 			</div>
@@ -48,7 +48,7 @@
 	@if (Model.ArticleType == ArticleType.Custom)
 	{
 		<div class="col-md-offset-1 col-md-11">
-			@Html.ActionLink("Add Article", "Add", "Article", new { controllerName = "PromoList", articleType = (int)ArticleType.Custom, count = Model.Count }, new { @class = "btn btn-default" })
+			@Html.ActionLink("Add Article", "Add", "Article", new { actionName = "PromoList", articleType = (int)ArticleType.BigPromo, count = Model.Count }, new { @class = "btn btn-default" })
 		</div>
 	}
 </div>

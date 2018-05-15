@@ -1,9 +1,9 @@
 ﻿@model  VtpGameApi.Models.ViewModel.ArticleVM
 @{
-	ViewBag.Title = "Index";
+	ViewBag.Title = "SmallPromo";
 
-	string smallCol = Model.ArticleType == ArticleType.Custom ? "col-md-5" : "col-md-6";
-	string bigCol = Model.ArticleType == ArticleType.Custom ? "col-md-10" : "col-md-12";
+	string smallCol = Model.ArticleType == ArticleType.SmallPromo ? "col-md-5" : "col-md-6";
+	string bigCol = Model.ArticleType == ArticleType.SmallPromo ? "col-md-10" : "col-md-12";
 }
 
 <div class="container">
@@ -28,18 +28,18 @@
 					<div>@Model.Article.Body</div>
 				}
 			</div>
-			@if (Model.ArticleType == ArticleType.Custom)
+			@if (Model.ArticleType == ArticleType.SmallPromo)
 			{
 				<div class="col-md-2">
-					@Html.ActionLink("Edit", "Edit", "Article", new { id = Model.Article.ArticleId, controllerName = "SmallPromo", articleType = (int)ArticleType.Custom, count = Model.Count }, null)
+					@Html.ActionLink("Edit", "Edit", "Article", new { id = Model.Article.ArticleId, actionName = "SmallPromo", articleType = (int)ArticleType.SmallPromo, count = Model.Count }, null)
 				</div>
 			}
 		</div>
 	}
-	else if (Model.ArticleType == ArticleType.Custom)
+	else if (Model.ArticleType == ArticleType.SmallPromo)
 	{
 		<div class="col-md-offset-1 col-md-11">
-			@Html.ActionLink("Add Article", "Add", "Article", new { controllerName = "SmallPromo", articleType = (int)ArticleType.Custom, count = Model.Count }, new { @class = "btn btn-default" })
+			@Html.ActionLink("Add Article", "Add", "Article", new { actionName = "SmallPromo", articleType = (int)ArticleType.SmallPromo, count = Model.Count }, new { @class = "btn btn-default" })
 		</div>
 	}
 </div>

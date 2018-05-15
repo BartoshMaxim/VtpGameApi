@@ -18,17 +18,17 @@
 				<div>
 					<input name="PromoList.ArticleType" type="radio" value="1" @(Model.PromoList.ArticleType == ArticleType.Custom ? "checked" : string.Empty)>
 					@ArticleType.Custom.ToString()
-					@Html.ActionLink("Preview", "Index", "PromoList", new { articleType = (int)ArticleType.Custom, count = Model.PromoList.ArticlesCount }, null)
+					@Html.ActionLink("Preview", "PromoList", new { articleType = (int)ArticleType.Custom, count = Model.PromoList.ArticlesCount })
 				</div>
 				<div>
 					<input name="PromoList.ArticleType" type="radio" value="2" @(Model.PromoList.ArticleType == ArticleType.SecondList ? "checked" : string.Empty)>
 					@ArticleType.SecondList.ToString()
-					@Html.ActionLink("Preview", "Index", "PromoList", new { articleType = (int)ArticleType.SecondList, count = Model.PromoList.ArticlesCount }, null)
+					@Html.ActionLink("Preview", "PromoList", new { articleType = (int)ArticleType.SecondList, count = Model.PromoList.ArticlesCount })
 				</div>
 				<div>
 					<input name="PromoList.ArticleType" type="radio" value="3" @(Model.PromoList.ArticleType == ArticleType.ThirdList ? "checked" : string.Empty)>
 					@ArticleType.ThirdList.ToString()
-					@Html.ActionLink("Preview", "Index", "PromoList", new { articleType = (int)ArticleType.ThirdList, count = Model.PromoList.ArticlesCount }, null)
+					@Html.ActionLink("Preview", "PromoList", new { articleType = (int)ArticleType.ThirdList, count = Model.PromoList.ArticlesCount })
 				</div>
 			</div>
 			<div>
@@ -55,17 +55,17 @@
 					<div>
 						<input name="SmallPromo.ArticleType" type="radio" value="1" @(Model.SmallPromo.ArticleType == ArticleType.Custom ? "checked" : string.Empty)>
 						@ArticleType.Custom.ToString()
-						@Html.ActionLink("Preview", "Index", "SmallPromo", new { articleType = (int)ArticleType.SmallPromo, promoType = "SmallPromo", count = 1 }, null)
+						@Html.ActionLink("Preview", "SmallPromo", new { articleType = (int)ArticleType.SmallPromo, promoType = "SmallPromo", count = 1 })
 					</div>
 					<div>
 						<input name="SmallPromo.ArticleType" type="radio" value="2" @(Model.SmallPromo.ArticleType == ArticleType.SecondList ? "checked" : string.Empty)>
 						@ArticleType.SecondList.ToString()
-						@Html.ActionLink("Preview", "Index", "SmallPromo", new { articleType = (int)ArticleType.SecondList, promoType = "SmallPromo", count = 1 }, null)
+						@Html.ActionLink("Preview", "SmallPromo", new { articleType = (int)ArticleType.SecondList, promoType = "SmallPromo", count = 1 })
 					</div>
 					<div>
 						<input name="SmallPromo.ArticleType" type="radio" value="3" @(Model.SmallPromo.ArticleType == ArticleType.ThirdList ? "checked" : string.Empty)>
 						@ArticleType.ThirdList.ToString()
-						@Html.ActionLink("Preview", "Index", "SmallPromo", new { articleType = (int)ArticleType.ThirdList, promoType = "SmallPromo", count = 1 }, null)
+						@Html.ActionLink("Preview", "SmallPromo", new { articleType = (int)ArticleType.ThirdList, promoType = "SmallPromo", count = 1 })
 					</div>
 				</div>
 			</div>
@@ -88,7 +88,7 @@
 					@Html.EditorFor(m => m.BigPromo.PromoPeriod, new { min = 0 })
 				</div>
 				<div>
-					@Html.ActionLink("Preview", "Preview", new { articleType = (int)ArticleType.BigPromo, promoType = "BigPromo", count = 1 })
+					@Html.ActionLink("Preview", "BigPromo", new { articleType = (int)ArticleType.BigPromo, promoType = "BigPromo", count = 1 })
 				</div>
 			</div>
 		</div>

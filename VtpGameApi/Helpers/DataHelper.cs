@@ -198,7 +198,7 @@ namespace VtpGameApi.Helpers
 			}
 		}
 
-		public static T GetPromo<T>() where T : PromoBase
+		public static T GetPromoSettings<T>() where T : PromoBase
 		{
 			using (var context = new SqlConnection(Settings.Sql))
 			{

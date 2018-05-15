@@ -1,21 +1,30 @@
-﻿using HtmlAgilityPack;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Newtonsoft.Json;
 using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.UI;
 using VtpGameApi.Helpers;
-using VtpGameApi.Models;
+using VtpGameApi.Models.Api;
 
 namespace VtpGameApi.Controllers
 {
 	public class HomeController : ApiController
 	{
-		// GET api/values
-		[OutputCache(Duration = 10000, Location = OutputCacheLocation.Server)]
-		public IEnumerable<Article> Get(int itemsCount = 10)
+		public PromoApiModel Get(string promoType)
 		{
-			return ArticleHelper.GetSecondArticleList(@"http://web.kpi.kharkov.ua/otp/ru/2018/", itemsCount);
+			PromoApiModel promoRes = new PromoApiModel();
+
+			switch (promoType)
+			{
+				case "PromoList":
+					promoRes = PromoHelper.GetPromoList();
+					break;
+				case "SmallPromo":
+					promoRes = PromoHelper.GetSmallPromo();
+					break;
+				case "BigPromo":
+					promoRes = PromoHelper.GetBigPromo();
+					break;
+			}
+
+			return promoRes;
 		}
 	}
 }

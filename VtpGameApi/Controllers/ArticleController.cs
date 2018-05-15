@@ -12,7 +12,7 @@ namespace VtpGameApi.Controllers
 			ArticleVM articleVM = new ArticleVM
 			{
 				ArticleType = articleType,
-				ControllerName = controllerName,
+				ActionName = controllerName,
 				Count = count
 			};
 
@@ -25,14 +25,14 @@ namespace VtpGameApi.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				DataHelper.SaveArticles(new[] { articleVM.Article }, ArticleType.Custom);
-				return RedirectToAction("Index", articleVM.ControllerName, new { articleType = articleVM.ArticleType, count = articleVM.Count });
+				DataHelper.SaveArticles(new[] { articleVM.Article }, articleVM.ArticleType);
+				return RedirectToAction(articleVM.ActionName, "Promo", new { articleType = articleVM.ArticleType, count = articleVM.Count });
 			}
 
 			return View(articleVM);
 		}
 
-		public ActionResult Edit(int id, string controllerName, ArticleType articleType, int count)
+		public ActionResult Edit(int id, string actionName, ArticleType articleType, int count)
 		{
 			var article = DataHelper.GetArticleById(id);
 
@@ -44,7 +44,7 @@ namespace VtpGameApi.Controllers
 			ArticleVM articleVM = new ArticleVM
 			{
 				ArticleType = articleType,
-				ControllerName = controllerName,
+				ActionName = actionName,
 				Count = count,
 				Article = article
 			};
@@ -59,13 +59,13 @@ namespace VtpGameApi.Controllers
 			if (ModelState.IsValid)
 			{
 				DataHelper.UpdateArticle(articleVM.Article);
-				return RedirectToAction("Index", articleVM.ControllerName, new { articleType = articleVM.ArticleType, count = articleVM.Count });
+				return RedirectToAction(articleVM.ActionName, "Promo", new { articleType = articleVM.ArticleType, count = articleVM.Count });
 			}
 
 			return View();
 		}
 
-		public ActionResult Delete(int id, string controllerName, ArticleType articleType, int count)
+		public ActionResult Delete(int id, string actionName, ArticleType articleType, int count)
 		{
 			var article = DataHelper.GetArticleById(id);
 
@@ -77,7 +77,7 @@ namespace VtpGameApi.Controllers
 			ArticleVM articleVM = new ArticleVM
 			{
 				ArticleType = articleType,
-				ControllerName = controllerName,
+				ActionName = actionName,
 				Count = count,
 				Article = article
 			};
@@ -92,7 +92,7 @@ namespace VtpGameApi.Controllers
 			if (ModelState.IsValid)
 			{
 				DataHelper.DeleteArticle(articleVM.Article);
-				return RedirectToAction("Index", articleVM.ControllerName, new { articleType = articleVM.ArticleType, count = articleVM.Count });
+				return RedirectToAction(articleVM.ActionName, "Promo", new { articleType = articleVM.ArticleType, count = articleVM.Count });
 			}
 
 			return View(articleVM);

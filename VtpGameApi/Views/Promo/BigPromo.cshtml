@@ -1,0 +1,30 @@
+﻿@model  VtpGameApi.Models.ViewModel.ArticleVM
+@{
+	ViewBag.Title = "BigPromo";
+}
+
+<div class="container">
+	@if (Model.Article != null)
+	{
+		<div class="col-md-8 article">
+			<div class="col-md-10">
+				<h4>@Model.Article.Header</h4>
+				<p>@Model.Article.Body</p>
+				<div>
+					<a href="@Model.Article.Uri">
+						<img src="@Model.Article.ImageUri" />
+					</a>
+				</div>
+			</div>
+			<div class="col-md-2">
+				@Html.ActionLink("Edit", "Edit", "Article", new { id = Model.Article.ArticleId, actionName = "BigPromo", articleType = (int)ArticleType.BigPromo, count = Model.Count }, null)
+			</div>
+		</div>
+	}
+	else if (Model.ArticleType == ArticleType.BigPromo)
+	{
+		<div class="col-md-offset-1 col-md-11">
+			@Html.ActionLink("Add Article", "Add", "Article", new { actionName = "BigPromo", articleType = (int)ArticleType.BigPromo, count = Model.Count }, new { @class = "btn btn-default" })
+		</div>
+	}
+</div>

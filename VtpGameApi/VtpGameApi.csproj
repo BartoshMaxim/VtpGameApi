@@ -164,15 +164,15 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PromoController.cs" />
-    <Compile Include="Controllers\PromoListController.cs" />
-    <Compile Include="Controllers\SmallPromoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ArticleHelper.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Helpers\PromoHelper.cs" />
     <Compile Include="Jobs\ArticlesJob.cs" />
     <Compile Include="Jobs\ArticlesSheduler.cs" />
+    <Compile Include="Models\Api\PromoApiModel.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\ArticleType.cs" />
     <Compile Include="Models\User.cs" />
@@ -215,12 +215,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Promo\Index.cshtml" />
-    <Content Include="Views\Promo\Preview.cshtml" />
-    <Content Include="Views\PromoList\Index.cshtml" />
     <Content Include="Views\Article\Add.cshtml" />
     <Content Include="Views\Article\Edit.cshtml" />
     <Content Include="Views\Article\Delete.cshtml" />
-    <Content Include="Views\SmallPromo\Index.cshtml" />
+    <Content Include="Views\Promo\PromoList.cshtml" />
+    <Content Include="Views\Promo\SmallPromo.cshtml" />
+    <Content Include="Views\Promo\BigPromo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
