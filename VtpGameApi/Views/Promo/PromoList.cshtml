@@ -48,7 +48,7 @@
 	@if (Model.ArticleType == ArticleType.Custom)
 	{
 		<div class="col-md-offset-1 col-md-11">
-			@Html.ActionLink("Add Article", "Add", "Article", new { actionName = "PromoList", articleType = (int)ArticleType.BigPromo, count = Model.Count }, new { @class = "btn btn-default" })
+			@Html.ActionLink("Add Article", "Add", "Article", new { actionName = "PromoList", articleType = (int)ArticleType.Custom, count = Model.Count }, new { @class = "btn btn-default" })
 		</div>
 	}
 </div>

@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Web.Http;
+﻿using System.Web.Http;
 using VtpGameApi.Helpers;
 using VtpGameApi.Models.Api;
 

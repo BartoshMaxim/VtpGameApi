@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿qusing System.Collections.Generic;
 
 namespace VtpGameApi.Models.Api
 {
